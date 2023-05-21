@@ -1,0 +1,33 @@
+{% include 'main.html' %} {% block content %}
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+</style>
+<h1>Welcome to my world!</h1>
+<div class="container">
+  <div>
+    <h1>TOPIC</h1>
+    <h1><a href="/">All</a></h1>
+    {% for topic in topics %}
+    <div>
+      <h1>
+        <a href="/?topic={{topic.name}}">{{topic.name}}</a>
+      </h1>
+    </div>
+    {% endfor %}
+  </div>
+  <div>
+    <a href="/create-course">Create Course</a>
+    {% for course in courses %}
+    <div>
+      <a href="/update-course/{{course.id}}">Update</a>
+      <a href="/delete-course/{{course.id}}">Delete</a>
+      <h1>{{course.id}} -- <a href="/course/{{course.id}}">{{course.name}}</a></h1>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

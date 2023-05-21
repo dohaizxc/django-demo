@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DJANGO DEMO</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <h1>UIT</h1>
+    <form method="POST" action="{% url 'home' %}">
+      <input
+        type="text"
+        name="topic"
+        placeholder="Search demo..."
+        value="{{ request.session.previous_search }}"
+      />
+      {% csrf_token %}
+      <button type="submit">Search</button>
+    </form>
+    <h1><a href="/get-bar-chart">Bar Chart</a></h1>
+    <h1><a href="/pie-chart">Pie Chart</a></h1>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>
